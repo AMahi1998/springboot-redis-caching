@@ -19,7 +19,7 @@ public class WeatherService {
         this.weatherRepository = weatherRepository;
     }
 
-    @Cacheable("weather")
+    @Cacheable(value = "weather", key = "#city")
     public String getWeatherByCity(String city) {
         System.out.println("Fetching data from DB for city: " + city);
         Optional<Weather> weather = weatherRepository.findByCity(city);
